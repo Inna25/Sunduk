@@ -1,12 +1,20 @@
 package com.javaguru.shoppinglist;
 
+import com.javaguru.shoppinglist.Validator.*;
 import java.util.ArrayList;
 import java.util.List;
 
 class ShoppingListApplication {
 
     public static void main(String[] args) {
-        ProductService productService = new DefaultProductService();
+        Validation[] validations = new Validation[]{
+            new MinPrice(),
+            new MaxDiscount(),
+            new NameLength()
+        };
+
+        ProductValidator productValidator = new ProductValidator(validations);
+        ProductService productService = new DefaultProductService(productValidator);
 
         Action exitAction = new ExitAction();
         Action createUserAction = new CreateProductAction(productService);
