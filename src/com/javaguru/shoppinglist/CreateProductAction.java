@@ -1,6 +1,10 @@
 package com.javaguru.shoppinglist;
 
+import com.sun.javadoc.SourcePosition;
+import com.javaguru.shoppinglist.Validator.FieldsValidationException;
+
 import java.math.BigDecimal;
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class CreateProductAction implements Action {
@@ -13,23 +17,39 @@ public class CreateProductAction implements Action {
         this.productService = productService;
     }
 
+
     @Override
     public void execute() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter product name:");
-        String name = scanner.nextLine();
-        System.out.println("Enter product price: ");
-        String price = scanner.nextLine();
+        String name;
+        BigDecimal price;
 
-        Product product = new Product();
-        product.setName(name);
-        product.setPrice(new BigDecimal(price));
+        System.out.println("Enter product name: ");
+        name = scanner.nextLine();
+
+        System.out.println("Enter product price: ");
+        price = new BigDecimal(scanner.nextLine());
+
+        System.out.println("Enter product category: ");
+        String category = scanner.nextLine();
+
+        System.out.println("Enter product discount: ");
+        BigDecimal discount = new BigDecimal(scanner.nextLine());
+
+        System.out.println("Enter product description: ");
+        String description = scanner.nextLine();
 
         try {
+            Product product = new Product();
+            product.setName(name);
+            product.setPrice(price);
+            product.setCategory(category);
+            product.setDiscount(discount);
+            product.setDescription(description);
+
             Long response = productService.create(product);
-            System.out.println("Response: " + response);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+        } catch (FieldsValidationException e) {
+            System.out.println("Error occured: " + e.getMessage());
         }
     }
 
@@ -37,4 +57,5 @@ public class CreateProductAction implements Action {
     public String toString() {
         return ACTION_NAME;
     }
+
 }
