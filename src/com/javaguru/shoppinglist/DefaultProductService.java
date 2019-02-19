@@ -1,12 +1,21 @@
 package com.javaguru.shoppinglist;
 
+import com.javaguru.shoppinglist.Validator.ProductValidator;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class DefaultProductService implements ProductService {
 
     private Map<Long, Product> database = new HashMap<>();
-    private Long PRODUCT_ID_SEQUENCE = 0L;
+    private Long productIdSequence = 0L;
+    private final ProductValidator productValidator;
+
+    public DefaultProductService(ProductValidator productValidator) {
+        this.database = database;
+        this.productIdSequence = productIdSequence;
+        this.productValidator = productValidator;
+    }
 
     public Product findBy(Long id) {
         if (id == null) {
@@ -20,10 +29,11 @@ public class DefaultProductService implements ProductService {
         if (product == null) {
             throw new IllegalArgumentException("Cannot be null");
         }
-        product.setId(PRODUCT_ID_SEQUENCE);
+        productValidator.validate(product);
+        product.setId(productIdSequence);
 
-        database.put(PRODUCT_ID_SEQUENCE, product);
-        return PRODUCT_ID_SEQUENCE++;
+        database.put(productIdSequence, product);
+        return productIdSequence++;
     }
 
 }
