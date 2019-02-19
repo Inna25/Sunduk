@@ -10,9 +10,8 @@ public class ProductValidator extends AbstractValidator{
     }
     @Override
     public void validate(Product newProduct) {
-        //assertNotNull(product);
         if (newProduct == null) {
-            throw new IllegalArgumentException("Cannot be null");
+            throw new IllegalArgumentException("Product cannot be null");
         }
         for (Validation element: validations){
             element.validate(newProduct);
