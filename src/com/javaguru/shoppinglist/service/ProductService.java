@@ -1,4 +1,6 @@
-package com.javaguru.shoppinglist;
+package com.javaguru.shoppinglist.service;
+
+import com.javaguru.shoppinglist.database.Product;
 
 public interface ProductService {
 

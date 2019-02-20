@@ -1,19 +1,16 @@
-package com.javaguru.shoppinglist;
+package com.javaguru.shoppinglist.service;
 
-import com.javaguru.shoppinglist.Validator.ProductValidator;
-
-import java.util.HashMap;
-import java.util.Map;
+import com.javaguru.shoppinglist.database.InMemoryDatabase;
+import com.javaguru.shoppinglist.service.validator.ProductValidator;
+import com.javaguru.shoppinglist.database.Product;
 
 public class DefaultProductService implements ProductService {
 
-    private Map<Long, Product> database = new HashMap<>();
-    private Long productIdSequence = 0L;
+    private final InMemoryDatabase database;
     private final ProductValidator productValidator;
 
-    public DefaultProductService(ProductValidator productValidator) {
+    public DefaultProductService(InMemoryDatabase database, ProductValidator productValidator) {
         this.database = database;
-        this.productIdSequence = productIdSequence;
         this.productValidator = productValidator;
     }
 
@@ -21,7 +18,7 @@ public class DefaultProductService implements ProductService {
         if (id == null) {
             throw new IllegalArgumentException("Id must be not null");
         }
-        return database.get(id);
+        return database.getDatabase().get(id);
     }
 
     @Override
@@ -30,10 +27,8 @@ public class DefaultProductService implements ProductService {
             throw new IllegalArgumentException("Cannot be null");
         }
         productValidator.validate(product);
-        product.setId(productIdSequence);
-
-        database.put(productIdSequence, product);
-        return productIdSequence++;
+        Long response = database.createProduct(product);
+        return response;
     }
 
 }

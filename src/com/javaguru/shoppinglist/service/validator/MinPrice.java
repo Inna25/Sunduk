@@ -1,6 +1,6 @@
-package com.javaguru.shoppinglist.Validator;
+package com.javaguru.shoppinglist.service.validator;
 
-import com.javaguru.shoppinglist.Product;
+import com.javaguru.shoppinglist.database.Product;
 
 import java.math.BigDecimal;
 

@@ -1,10 +1,11 @@
-package com.javaguru.shoppinglist;
+package com.javaguru.shoppinglist.consoleUI;
 
-import com.sun.javadoc.SourcePosition;
-import com.javaguru.shoppinglist.Validator.FieldsValidationException;
+import com.javaguru.shoppinglist.database.Product;
+import com.javaguru.shoppinglist.service.ProductService;
+import com.javaguru.shoppinglist.consoleUI.Action;
+import com.javaguru.shoppinglist.service.validator.FieldsValidationException;
 
 import java.math.BigDecimal;
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class CreateProductAction implements Action {
