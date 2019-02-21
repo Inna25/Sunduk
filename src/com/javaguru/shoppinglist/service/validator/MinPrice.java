@@ -11,7 +11,7 @@ public class MinPrice extends AbstractValidator {
         if (assertNotNull(price.toString())) {
             minPrice(price);
         } else {
-            throw new FieldsValidationException ("The field Price can't be empty");
+            throw new FieldsValidationException("The field Price can't be empty");
         }
     }
 

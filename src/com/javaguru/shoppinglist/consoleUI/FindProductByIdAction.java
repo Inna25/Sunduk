@@ -21,7 +21,7 @@ public class FindProductByIdAction implements Action {
         System.out.println("Enter id: ");
         Long id = scanner.nextLong();
 
-        Product response = productService.findBy(id);
+        Product response = productService.findByID(id);
         System.out.println("Response: " + response);
     }
 

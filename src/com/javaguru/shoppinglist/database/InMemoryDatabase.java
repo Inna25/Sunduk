@@ -10,15 +10,15 @@ public class InMemoryDatabase {
     public Map<Long, Product> getDatabase() {
         return database;
     }
-    //    public InMemoryDatabase(Map<Long, Product> database, Long productIdSequence) {
-//        this.database = database;
-//        this.productIdSequence = productIdSequence;
-//    }
 
-    public long createProduct (Product product){
+    public long createProduct(Product product) {
         product.setId(productIdSequence);
         database.put(productIdSequence, product);
         return productIdSequence++;
+    }
+
+    public Product getByID(Long id) {
+        return database.get(id);
     }
 
 }

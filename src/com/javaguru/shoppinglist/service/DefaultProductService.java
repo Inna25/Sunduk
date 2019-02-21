@@ -14,11 +14,11 @@ public class DefaultProductService implements ProductService {
         this.productValidator = productValidator;
     }
 
-    public Product findBy(Long id) {
+    public Product findByID(Long id) {
         if (id == null) {
             throw new IllegalArgumentException("Id must be not null");
         }
-        return database.getDatabase().get(id);
+        return database.getByID(id);
     }
 
     @Override
@@ -28,7 +28,7 @@ public class DefaultProductService implements ProductService {
         }
         productValidator.validate(product);
         Long response = database.createProduct(product);
+
         return response;
     }
-
 }
