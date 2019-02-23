@@ -2,7 +2,9 @@ package com.javaguru.shoppinglist.service.validator;
 
 import com.javaguru.shoppinglist.database.Product;
 
-public class ProductValidator extends AbstractValidator {
+import java.util.Arrays;
+
+public class ProductValidator implements Validation{
     private Validation[] validations;
 
     public ProductValidator(Validation[] validations) {
@@ -14,8 +16,6 @@ public class ProductValidator extends AbstractValidator {
         if (newProduct == null) {
             throw new IllegalArgumentException("Product cannot be null");
         }
-        for (Validation element : validations) {
-            element.validate(newProduct);
-        }
+        Arrays.stream(validations).forEach(validation -> validation.validate(newProduct));
     }
 }

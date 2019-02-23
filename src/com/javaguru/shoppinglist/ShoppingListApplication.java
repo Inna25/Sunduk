@@ -14,9 +14,9 @@ class ShoppingListApplication {
     public static void main(String[] args) {
         InMemoryDatabase database = new InMemoryDatabase();
         Validation[] validations = new Validation[]{
-                new MinPrice(),
-                new MaxDiscount(),
-                new NameLength()
+                new MinPriceValidator(),
+                new MaxDiscountValidator(),
+                new NameLengthValidator()
         };
 
         ProductValidator productValidator = new ProductValidator(validations);

@@ -2,8 +2,7 @@ package com.javaguru.shoppinglist.consoleUI;
 
 import com.javaguru.shoppinglist.database.Product;
 import com.javaguru.shoppinglist.service.ProductService;
-import com.javaguru.shoppinglist.consoleUI.Action;
-import com.javaguru.shoppinglist.service.validator.FieldsValidationException;
+import com.javaguru.shoppinglist.service.validator.FieldValidationException;
 
 import java.math.BigDecimal;
 import java.util.Scanner;
@@ -49,7 +48,7 @@ public class CreateProductAction implements Action {
             product.setDescription(description);
 
             Long response = productService.create(product);
-        } catch (FieldsValidationException e) {
+        } catch (FieldValidationException e) {
             System.out.println("Error occured: " + e.getMessage());
         }
     }

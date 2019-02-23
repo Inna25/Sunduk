@@ -4,7 +4,7 @@ import com.javaguru.shoppinglist.database.Product;
 
 import java.math.BigDecimal;
 
-public class MaxDiscount extends AbstractValidator {
+public class MaxDiscountValidator implements Validation{
 
     @Override
     public void validate(Product newProduct) {
@@ -16,7 +16,7 @@ public class MaxDiscount extends AbstractValidator {
 
     private void maxDiscount(BigDecimal discount) {
         if (discount.floatValue() > 100) {
-            throw new FieldsValidationException("Discount must be less than 100%");
+            throw new FieldValidationException("Discount must be less than 100%");
         }
     }
 
