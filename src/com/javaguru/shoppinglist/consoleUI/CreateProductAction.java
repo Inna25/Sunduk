@@ -1,10 +1,10 @@
-package com.javaguru.shoppinglist;
+package com.javaguru.shoppinglist.consoleUI;
 
-import com.sun.javadoc.SourcePosition;
-import com.javaguru.shoppinglist.Validator.FieldsValidationException;
+import com.javaguru.shoppinglist.database.Product;
+import com.javaguru.shoppinglist.service.ProductService;
+import com.javaguru.shoppinglist.service.validator.FieldValidationException;
 
 import java.math.BigDecimal;
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class CreateProductAction implements Action {
@@ -48,7 +48,7 @@ public class CreateProductAction implements Action {
             product.setDescription(description);
 
             Long response = productService.create(product);
-        } catch (FieldsValidationException e) {
+        } catch (FieldValidationException e) {
             System.out.println("Error occured: " + e.getMessage());
         }
     }
