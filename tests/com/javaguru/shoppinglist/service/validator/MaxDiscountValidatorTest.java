@@ -28,9 +28,9 @@ public class MaxDiscountValidatorTest {
         victim.validate(input);
     }
 
-    private Product product(BigDecimal price) {
+    private Product product(BigDecimal discount) {
         Product product = new Product();
-        product.setPrice(price);
+        product.setDiscount(discount);
         return product;
     }
 
