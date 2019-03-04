@@ -1,7 +1,5 @@
 package com.javaguru.shoppinglist.service;
 
-import static org.junit.Assert.*;
-
 import com.javaguru.shoppinglist.database.Product;
 import com.javaguru.shoppinglist.database.InMemoryDatabase;
 import com.javaguru.shoppinglist.service.validator.ProductValidator;
@@ -19,9 +17,15 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-
 @RunWith(MockitoJUnitRunner.class)
 public class DefaultProductServiceTest {
+
+    private final BigDecimal price = new BigDecimal("5");
+    private final BigDecimal discount = new BigDecimal("1");
+    private final long id = 1;
+    private final String productName = "Apple";
+    private final String category = "Fruit";
+    private final String description = "Tasty";
 
     @Mock
     private InMemoryDatabase database;
@@ -39,6 +43,7 @@ public class DefaultProductServiceTest {
     public void shouldCreateProduct() {
         Product product = product();
         when(database.createProduct(product)).thenReturn(product.getId());
+
         Long result = victim.create(product);
         verify(validationService).validate(productCaptor.capture());
         Product captorResult = productCaptor.getValue();
@@ -49,19 +54,19 @@ public class DefaultProductServiceTest {
     @Test
     public void shouldFindProduct() {
         Product product = product();
-        when(database.getByID(1L)).thenReturn(product);
-        Product result = victim.findByID(1L);
-        assertEquals(product(), result);
+        when(database.getByID(id)).thenReturn(product());
+        Product result = victim.findByID(id);
+        assertEquals(product, result);
     }
 
     private Product product() {
         Product newProduct = new Product();
-        newProduct.setId(2L);
-        newProduct.setName("Apple");
-        newProduct.setPrice(new BigDecimal("5"));
-        newProduct.setCategory("Fruit");
-        newProduct.setDiscount(new BigDecimal("1"));
-        newProduct.setDescription("tasty");
+        newProduct.setId(id);
+        newProduct.setName(productName);
+        newProduct.setPrice(price);  
+        newProduct.setCategory(category);
+        newProduct.setDiscount(discount);
+        newProduct.setDescription(description);
         return newProduct;
     }
 

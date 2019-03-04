@@ -6,13 +6,19 @@
     <artifactId>todolist</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>todo-list</name>
-    <description>JavaGuru Java 2 course demo project</description>
+    <description></description>
 
     <properties>
         <java.version>1.8</java.version>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>3.141.59</version>
+        </dependency>
+
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>

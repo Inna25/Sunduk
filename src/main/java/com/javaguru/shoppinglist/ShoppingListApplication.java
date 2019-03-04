@@ -5,7 +5,6 @@ import com.javaguru.shoppinglist.service.DefaultProductService;
 import com.javaguru.shoppinglist.service.ProductService;
 import com.javaguru.shoppinglist.service.validator.*;
 import com.javaguru.shoppinglist.consoleUI.*;
-//import org.testng.annotations.*; /////
 
 import java.util.ArrayList;
 import java.util.List;

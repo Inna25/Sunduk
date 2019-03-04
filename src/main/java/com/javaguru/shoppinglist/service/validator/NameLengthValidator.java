@@ -18,7 +18,8 @@ public class NameLengthValidator implements Validation{
 
     private void productNameLength(String productName) {
         if (productName.length() < minNameLength || maxNameLength < productName.length()) {
-            throw new FieldValidationException("The field's Name length must be more than 3 symbols and less than 32.");
+            throw new FieldValidationException("The field's Name length must be more than "+ minNameLength +
+                    " symbols and less than "+ maxNameLength);
         }
     }
 

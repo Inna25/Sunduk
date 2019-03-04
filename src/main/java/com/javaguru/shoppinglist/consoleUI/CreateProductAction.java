@@ -17,27 +17,29 @@ public class CreateProductAction implements Action {
         this.productService = productService;
     }
 
-
     @Override
     public void execute() {
         Scanner scanner = new Scanner(System.in);
         String name;
         BigDecimal price;
+        String category;
+        BigDecimal discount;
+        String description;
 
         System.out.println("Enter product name: ");
         name = scanner.nextLine();
 
         System.out.println("Enter product price: ");
-        price = new BigDecimal(scanner.nextLine());
+        price = correctBigDecimal(scanner.nextLine());
 
         System.out.println("Enter product category: ");
-        String category = scanner.nextLine();
+        category = scanner.nextLine();
 
         System.out.println("Enter product discount: ");
-        BigDecimal discount = new BigDecimal(scanner.nextLine());
+        discount = correctBigDecimal(scanner.nextLine());
 
         System.out.println("Enter product description: ");
-        String description = scanner.nextLine();
+        description = scanner.nextLine();
 
         try {
             Product product = new Product();
@@ -51,6 +53,16 @@ public class CreateProductAction implements Action {
         } catch (FieldValidationException e) {
             System.out.println("Error occured: " + e.getMessage());
         }
+    }
+
+    private BigDecimal correctBigDecimal(String stringValue) {
+        BigDecimal correctValue;
+        if (stringValue == null || stringValue.equals("")){
+            correctValue = new BigDecimal(0);
+        } else {
+            correctValue = new BigDecimal(stringValue);
+        }
+        return correctValue;
     }
 
     @Override

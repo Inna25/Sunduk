@@ -8,7 +8,6 @@ import org.junit.rules.ExpectedException;
 public class NameLengthValidatorTest {
 
     @Rule
-
     public final ExpectedException expectedException = ExpectedException.none();
     private NameLengthValidator victim = new NameLengthValidator();
     private Product input;
@@ -27,7 +26,8 @@ public class NameLengthValidatorTest {
     public void shouldThrowExceptionAboutMin() {
         input = product("Ap");
         expectedException.expect(FieldValidationException.class);
-        expectedException.expectMessage("The field's Name length must be more than 3 symbols and less than 32.");
+        expectedException.expectMessage("The field's Name length must be more than " + minNameLength +
+                                                 " symbols and less than " + maxNameLength);
         victim.validate(input);
     }
 
@@ -35,7 +35,8 @@ public class NameLengthValidatorTest {
     public void shouldThrowExceptionAboutMax() {
         input = product("Very big - red and beautiful and tasty apple");
         expectedException.expect(FieldValidationException.class);
-        expectedException.expectMessage("The field's Name length must be more than 3 symbols and less than 32.");
+        expectedException.expectMessage("The field's Name length must be more than " + minNameLength +
+                                                 " symbols and less than " + maxNameLength);
         victim.validate(input);
     }
 
