@@ -3,8 +3,8 @@ package com.javaguru.shoppinglist.service.validator;
 import com.javaguru.shoppinglist.database.Product;
 
 public class NameLengthValidator implements Validation{
-    private final int minNameLength = 3;
-    private final int maxNameLength = 32;
+    private final int MIN_NAME_LENGTH = 3;
+    private final int MAX_NAME_LENGTH = 32;
 
     @Override
     public void validate(Product newProduct) {
@@ -17,8 +17,9 @@ public class NameLengthValidator implements Validation{
     }
 
     private void productNameLength(String productName) {
-        if (productName.length() < minNameLength || maxNameLength < productName.length()) {
-            throw new FieldValidationException("The field's Name length must be more than 3 symbols and less than 32.");
+        if (productName.length() < MIN_NAME_LENGTH || MAX_NAME_LENGTH < productName.length()) {
+            throw new FieldValidationException("The field's Name length must be more than "+ MIN_NAME_LENGTH +
+                    " symbols and less than "+ MAX_NAME_LENGTH);
         }
     }
 
