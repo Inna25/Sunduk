@@ -20,12 +20,12 @@ import static org.mockito.Mockito.when;
 @RunWith(MockitoJUnitRunner.class)
 public class DefaultProductServiceTest {
 
-    private final BigDecimal price = new BigDecimal("5");
-    private final BigDecimal discount = new BigDecimal("1");
-    private final long id = 1;
-    private final String productName = "Apple";
-    private final String category = "Fruit";
-    private final String description = "Tasty";
+    private final BigDecimal PRICE = new BigDecimal("5");
+    private final BigDecimal DISCOUNT = new BigDecimal("1");
+    private final long ID = 1;
+    private final String PRODUCT_NAME = "Apple";
+    private final String CATEGORY = "Fruit";
+    private final String DESCRIPTION = "Tasty";
 
     @Mock
     private InMemoryDatabase database;
@@ -54,19 +54,19 @@ public class DefaultProductServiceTest {
     @Test
     public void shouldFindProduct() {
         Product product = product();
-        when(database.getByID(id)).thenReturn(product());
-        Product result = victim.findByID(id);
+        when(database.getByID(ID)).thenReturn(product());
+        Product result = victim.findByID(ID);
         assertEquals(product, result);
     }
 
     private Product product() {
         Product newProduct = new Product();
-        newProduct.setId(id);
-        newProduct.setName(productName);
-        newProduct.setPrice(price);  
-        newProduct.setCategory(category);
-        newProduct.setDiscount(discount);
-        newProduct.setDescription(description);
+        newProduct.setId(ID);
+        newProduct.setName(PRODUCT_NAME);
+        newProduct.setPrice(PRICE);
+        newProduct.setCategory(CATEGORY);
+        newProduct.setDiscount(DISCOUNT);
+        newProduct.setDescription(DESCRIPTION);
         return newProduct;
     }
 

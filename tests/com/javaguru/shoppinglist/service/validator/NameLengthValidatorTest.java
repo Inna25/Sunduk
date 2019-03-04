@@ -11,8 +11,8 @@ public class NameLengthValidatorTest {
     public final ExpectedException expectedException = ExpectedException.none();
     private NameLengthValidator victim = new NameLengthValidator();
     private Product input;
-    private final int minNameLength = 3;
-    private final int maxNameLength = 32;
+    private final int MIN_NAME_LENGTH = 3;
+    private final int MAX_NAME_LENGTH = 32;
 
     @Test
     public void shouldThrowExceptionAboutEmpty() {
@@ -26,8 +26,8 @@ public class NameLengthValidatorTest {
     public void shouldThrowExceptionAboutMin() {
         input = product("Ap");
         expectedException.expect(FieldValidationException.class);
-        expectedException.expectMessage("The field's Name length must be more than " + minNameLength +
-                                                 " symbols and less than " + maxNameLength);
+        expectedException.expectMessage("The field's Name length must be more than " + MIN_NAME_LENGTH +
+                                                 " symbols and less than " + MAX_NAME_LENGTH);
         victim.validate(input);
     }
 
@@ -35,8 +35,8 @@ public class NameLengthValidatorTest {
     public void shouldThrowExceptionAboutMax() {
         input = product("Very big - red and beautiful and tasty apple");
         expectedException.expect(FieldValidationException.class);
-        expectedException.expectMessage("The field's Name length must be more than " + minNameLength +
-                                                 " symbols and less than " + maxNameLength);
+        expectedException.expectMessage("The field's Name length must be more than " + MIN_NAME_LENGTH +
+                                                 " symbols and less than " + MAX_NAME_LENGTH);
         victim.validate(input);
     }
 
