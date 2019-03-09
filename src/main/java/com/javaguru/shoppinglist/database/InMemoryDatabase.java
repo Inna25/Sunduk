@@ -1,8 +1,11 @@
 package com.javaguru.shoppinglist.database;
 
+import org.springframework.stereotype.Component;
+
 import java.util.HashMap;
 import java.util.Map;
 
+@Component
 public class InMemoryDatabase {
     private Map<Long, Product> database = new HashMap<>();
     private Long productIdSequence = 0L;
