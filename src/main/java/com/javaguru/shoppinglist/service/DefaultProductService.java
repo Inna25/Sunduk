@@ -4,21 +4,23 @@ import com.javaguru.shoppinglist.database.InMemoryDatabase;
 import com.javaguru.shoppinglist.service.validator.ProductValidator;
 import com.javaguru.shoppinglist.database.Product;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
 public class DefaultProductService implements ProductService {
 
     private final InMemoryDatabase database;
     private final ProductValidator productValidator;
-
+@Autowired
     public DefaultProductService(InMemoryDatabase database, ProductValidator productValidator) {
         this.database = database;
         this.productValidator = productValidator;
     }
 
     public Product findByID(Long id) {
-        if (id == null) {
-            throw new IllegalArgumentException("Id must be not null");
-        }
-        return database.getByID(id);
+        return database.getByID(id)
+                .orElseThrow(() -> new IllegalArgumentException("Product not found, id: " + id));
     }
 
     @Override
@@ -30,5 +32,9 @@ public class DefaultProductService implements ProductService {
         Long response = database.createProduct(product);
 
         return response;
+    }
+
+    public void findAll() {
+        database.returnAll();
     }
 }

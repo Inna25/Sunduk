@@ -1,17 +1,22 @@
 package com.javaguru.shoppinglist.consoleUI;
 
 import com.javaguru.shoppinglist.database.Product;
-import com.javaguru.shoppinglist.service.ProductService;
+import com.javaguru.shoppinglist.service.DefaultProductService;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
 
+@Component
 public class FindProductByIdAction implements Action {
 
     private static final String ACTION_NAME = "Find by ID";
 
-    private final ProductService productService;
+    private final DefaultProductService productService;
 
-    public FindProductByIdAction(ProductService productService) {
+    @Autowired
+    public FindProductByIdAction(DefaultProductService productService) {
         this.productService = productService;
     }
 

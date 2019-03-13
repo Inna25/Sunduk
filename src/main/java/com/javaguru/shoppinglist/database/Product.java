@@ -11,6 +11,7 @@ public class Product {
     private String category;
     private BigDecimal discount;
     private String description;
+    private String printDiscount = "";
 
     public Long getId() {
         return id;
@@ -81,13 +82,15 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", price=" + price +
-                ", category='" + category + '\'' +
-                ", discount=" + discount +
-                ", description='" + description + '\'' +
-                '}';
+        if (discount.signum() == 1) {
+            printDiscount = "Discount: " + discount +'\n' +
+                    "Actual price: " + price.subtract(discount) + '\n';
+        }
+        return  "ID: " + id + '\n' +
+                "Name: " + name + '\n' +
+                "Category: " + category + '\n' +
+                "Regular price: " + price + '\n' +
+                printDiscount +
+                "Description: " + description;
     }
 }

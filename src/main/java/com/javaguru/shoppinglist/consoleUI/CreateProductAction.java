@@ -1,22 +1,26 @@
 package com.javaguru.shoppinglist.consoleUI;
 
 import com.javaguru.shoppinglist.database.Product;
-import com.javaguru.shoppinglist.service.ProductService;
+import com.javaguru.shoppinglist.service.DefaultProductService;
 import com.javaguru.shoppinglist.service.validator.FieldValidationException;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.util.Scanner;
 
+@Component
 public class CreateProductAction implements Action {
 
     private static final String ACTION_NAME = "Create Product";
 
-    private final ProductService productService;
+    private final DefaultProductService productService;
 
-    public CreateProductAction(ProductService productService) {
+    @Autowired
+    public CreateProductAction(DefaultProductService productService) {
         this.productService = productService;
     }
-
     @Override
     public void execute() {
         Scanner scanner = new Scanner(System.in);

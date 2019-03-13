@@ -2,6 +2,9 @@ package com.javaguru.shoppinglist.service.validator;
 
 import com.javaguru.shoppinglist.database.Product;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class NameLengthValidator implements Validation{
     private final int MIN_NAME_LENGTH = 3;
     private final int MAX_NAME_LENGTH = 32;
