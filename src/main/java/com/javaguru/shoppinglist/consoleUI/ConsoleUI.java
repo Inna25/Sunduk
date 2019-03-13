@@ -6,11 +6,10 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.Scanner;
 
-@Component // может и не надо
+@Component
 public class ConsoleUI {
 
     private final List<Action> actions;
-// возможно тут нужен Autowired
     @Autowired
     public ConsoleUI(List<Action> actions) {
         this.actions = actions;

@@ -19,10 +19,8 @@ public class DefaultProductService implements ProductService {
     }
 
     public Product findByID(Long id) {
-        if (id == null) {
-            throw new IllegalArgumentException("Id must be not null");
-        }
-        return database.getByID(id);
+        return database.getByID(id)
+                .orElseThrow(() -> new IllegalArgumentException("Product not found, id: " + id));
     }
 
     @Override
@@ -34,5 +32,9 @@ public class DefaultProductService implements ProductService {
         Long response = database.createProduct(product);
 
         return response;
+    }
+
+    public void findAll() {
+        database.returnAll();
     }
 }

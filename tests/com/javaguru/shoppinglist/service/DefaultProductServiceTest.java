@@ -54,7 +54,7 @@ public class DefaultProductServiceTest {
     @Test
     public void shouldFindProduct() {
         Product product = product();
-        when(database.getByID(ID)).thenReturn(product());
+        when(database.getByID(ID)).thenReturn(java.util.Optional.ofNullable(product()));
         Product result = victim.findByID(ID);
         assertEquals(product, result);
     }
