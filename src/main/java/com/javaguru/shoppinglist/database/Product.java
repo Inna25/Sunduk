@@ -84,7 +84,7 @@ public class Product {
     public String toString() {
         if (discount.signum() == 1) {
             printDiscount = "Discount: " + discount +'\n' +
-                    "Actual price: " + price.subtract(discount) + '\n';
+                    "Actual price: " + price.subtract(price.multiply(discount).movePointLeft(2)).setScale(2) + '\n';
         }
         return  "ID: " + id + '\n' +
                 "Name: " + name + '\n' +

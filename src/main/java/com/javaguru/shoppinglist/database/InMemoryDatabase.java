@@ -27,6 +27,10 @@ public class InMemoryDatabase {
         return Optional.ofNullable(database.get(id));
     }
 
+    public boolean existsByName(String name) {
+        return getDatabase().values().stream().anyMatch(product -> product.getName().equalsIgnoreCase(name));
+    }
+
     public void returnAll() {
         int countOfProducts = database.size();
         if (countOfProducts == 0) {
