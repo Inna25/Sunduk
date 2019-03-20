@@ -28,7 +28,8 @@ public class InMemoryDatabase {
     }
 
     public boolean existsByName(String name) {
-        return getDatabase().values().stream().anyMatch(product -> product.getName().equalsIgnoreCase(name));
+        return getDatabase().values().stream().anyMatch(product ->
+                product.getName().equalsIgnoreCase(name));
     }
 
     public void returnAll() {

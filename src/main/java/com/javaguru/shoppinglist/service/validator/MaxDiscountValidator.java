@@ -13,7 +13,7 @@ public class MaxDiscountValidator implements Validation {
     @Override
     public void validate(Product newProduct) {
         BigDecimal discount = newProduct.getDiscount();
-        if (discount.floatValue()<MIN_DISCOUNT || MAX_DISCOUNT<discount.floatValue()) {
+        if (discount.floatValue() < MIN_DISCOUNT || MAX_DISCOUNT < discount.floatValue()) {
             throw new FieldValidationException("Discount must be more than " + MIN_DISCOUNT +
                     "% and less than " + MAX_DISCOUNT + "%");
         }
