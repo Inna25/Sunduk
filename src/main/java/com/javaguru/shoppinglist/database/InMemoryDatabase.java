@@ -17,7 +17,7 @@ public class InMemoryDatabase {
         return database;
     }
 
-    public long createProduct(Product product) {
+    public Long createProduct(Product product) {
         product.setId(productIdSequence);
         database.put(productIdSequence, product);
         return productIdSequence++;
