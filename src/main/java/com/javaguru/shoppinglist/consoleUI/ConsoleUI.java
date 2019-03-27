@@ -10,6 +10,7 @@ import java.util.Scanner;
 public class ConsoleUI {
 
     private final List<Action> actions;
+
     @Autowired
     public ConsoleUI(List<Action> actions) {
         this.actions = actions;

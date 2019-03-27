@@ -8,4 +8,6 @@ public interface ProductService {
 
     Product findByID(Long id);
 
+    void findAll();
+
 }

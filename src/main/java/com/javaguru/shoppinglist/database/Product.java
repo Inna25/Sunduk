@@ -11,7 +11,6 @@ public class Product {
     private String category;
     private BigDecimal discount;
     private String description;
-    private String printDiscount = "";
 
     public Long getId() {
         return id;
@@ -82,6 +81,7 @@ public class Product {
 
     @Override
     public String toString() {
+        String printDiscount = "";
         if (discount.signum() == 1) {
             printDiscount = "Discount: " + discount +'\n' +
                             "Actual price: " + price.subtract(price.multiply(discount)

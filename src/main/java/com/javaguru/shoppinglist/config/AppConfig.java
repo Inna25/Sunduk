@@ -13,7 +13,7 @@ package com.javaguru.shoppinglist.config;
         import javax.sql.DataSource;
 
 @Configuration
-@ComponentScan(basePackages = "com.javaguru.todolist")
+@ComponentScan(basePackages = "com.javaguru.shoppinglist")
 @PropertySource("classpath:application.properties")
 public class AppConfig {
 
