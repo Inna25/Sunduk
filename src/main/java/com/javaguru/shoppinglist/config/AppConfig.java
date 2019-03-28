@@ -1,16 +1,16 @@
 
 package com.javaguru.shoppinglist.config;
 
-        import org.apache.commons.dbcp.BasicDataSource;
-        import org.springframework.beans.factory.annotation.Value;
-        import org.springframework.context.annotation.Bean;
-        import org.springframework.context.annotation.ComponentScan;
-        import org.springframework.context.annotation.Configuration;
-        import org.springframework.context.annotation.PropertySource;
-        import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
-        import org.springframework.jdbc.core.JdbcTemplate;
+import org.apache.commons.dbcp.BasicDataSource;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+import org.springframework.jdbc.core.JdbcTemplate;
 
-        import javax.sql.DataSource;
+import javax.sql.DataSource;
 
 @Configuration
 @ComponentScan(basePackages = "com.javaguru.shoppinglist")

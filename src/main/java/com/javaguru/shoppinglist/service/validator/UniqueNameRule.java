@@ -6,10 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class UniqueNameRule implements Validation{
+public class UniqueNameRule implements Validation {
 
     private final ProductDatabase database;
-    //private final InMemoryDatabase database;
 
     @Autowired
     public UniqueNameRule(ProductDatabase database) {

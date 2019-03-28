@@ -8,9 +8,10 @@ import org.springframework.stereotype.Component;
 import java.util.Arrays;
 
 @Component
-public class ProductValidator implements Validation{
+public class ProductValidator implements Validation {
     private Validation[] validations;
-@Autowired
+
+    @Autowired
     public ProductValidator(Validation[] validations) {
         this.validations = validations;
     }

@@ -24,6 +24,7 @@ public class ConfigForConsole {
         this.outputAllProducts = outputAllProducts;
         this.toExitAction = toExitAction;
     }
+
     @Bean
     ConsoleUI consoleUI() {
         List<Action> actions = new ArrayList<>();

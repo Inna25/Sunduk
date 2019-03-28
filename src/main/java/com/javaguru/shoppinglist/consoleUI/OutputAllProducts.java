@@ -11,7 +11,7 @@ public class OutputAllProducts implements Action {
     private static final String ACTION_NAME = "Get list of products";
     private final DefaultProductService productService;
 
-   @Autowired
+    @Autowired
     public OutputAllProducts(DefaultProductService productService) {
         this.productService = productService;
     }

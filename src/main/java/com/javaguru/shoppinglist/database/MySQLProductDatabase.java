@@ -25,15 +25,18 @@ class MySQLProductDatabase implements ProductDatabase {
 
     @Override
     public Long createProduct(Product product) {
-        String query = "insert into products (name, description) values (" +
-                "?, ?)";
+        String query = "insert into products (name, price, category, discount, description) values (" +
+                "?, ?, ?, ?, ?)";
         KeyHolder keyHolder = new GeneratedKeyHolder();
 
         jdbcTemplate.update(connection -> {
             PreparedStatement ps = connection
                     .prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, product.getName());
-            ps.setString(2, product.getDescription());
+            ps.setBigDecimal(2, product.getPrice());
+            ps.setString(3, product.getCategory());
+            ps.setBigDecimal(4, product.getDiscount());
+            ps.setString(5, product.getDescription());
             return ps;
         }, keyHolder);
 
@@ -55,7 +58,7 @@ class MySQLProductDatabase implements ProductDatabase {
     public boolean existsByName(String name) {
         String query = "SELECT CASE WHEN count(*)> 0 " +
                 "THEN true ELSE false END " +
-                "FROM products where name=" + name;
+                "FROM products where name='" + name + "'";
         return jdbcTemplate.queryForObject(query, Boolean.class);
     }
 
@@ -67,10 +70,9 @@ class MySQLProductDatabase implements ProductDatabase {
         if (!products.isEmpty()) {
             int countOfProducts = products.size();
             System.out.println("Product information:");
-            for(int i = 0; i < countOfProducts; i++) {
+            for (int i = 0; i < countOfProducts; i++) {
                 System.out.println(products.get(i));
             }
         }
     }
-
 }
