@@ -63,16 +63,13 @@ class MySQLProductDatabase implements ProductDatabase {
     }
 
     @Override
-    public void returnAll() {
+    public Optional<List<Product>> findAll() {
         String query = "select * from products";
         List<Product> products = jdbcTemplate.query(query,
                 new BeanPropertyRowMapper(Product.class));
         if (!products.isEmpty()) {
-            int countOfProducts = products.size();
-            System.out.println("Product information:");
-            for (int i = 0; i < countOfProducts; i++) {
-                System.out.println(products.get(i));
-            }
+            return Optional.ofNullable(products);
         }
+        return Optional.empty();
     }
 }

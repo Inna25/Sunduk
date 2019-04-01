@@ -1,5 +1,6 @@
 package com.javaguru.shoppinglist.database;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface ProductDatabase {
@@ -9,5 +10,5 @@ public interface ProductDatabase {
 
     boolean existsByName(String name);
 
-    void returnAll();
+    Optional<List<Product>> findAll();
 }

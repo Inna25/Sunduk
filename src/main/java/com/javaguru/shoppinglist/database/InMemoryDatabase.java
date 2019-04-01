@@ -31,23 +31,19 @@ public class InMemoryDatabase implements ProductDatabase {
         return Optional.ofNullable(database.get(id));
     }
 
-    //@Override
+    @Override
     public boolean existsByName(String name) {
         return getDatabase().values().stream().anyMatch(product ->
                 product.getName().equalsIgnoreCase(name));
     }
 
     @Override
-    public void returnAll() {
-        int countOfProducts = database.size();
-        if (countOfProducts == 0) {
-            System.out.println("List of products is empty");
+    public Optional<List<Product>> findAll() {
+        if (database.size() == 0) {
+            return Optional.empty();
         } else {
             List<Product> List = new ArrayList<Product>(database.values());
-            System.out.println("Product information:");
-            for (int i = 0; i < countOfProducts; i++) {
-                System.out.println(List.get(i));
-            }
+            return Optional.ofNullable(List);
         }
     }
 

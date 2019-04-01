@@ -1,9 +1,12 @@
 package com.javaguru.shoppinglist.consoleUI;
 
+import com.javaguru.shoppinglist.database.Product;
 import com.javaguru.shoppinglist.service.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Component
 public class OutputAllProducts implements Action {
@@ -18,9 +21,12 @@ public class OutputAllProducts implements Action {
 
     @Override
     public void execute() {
-        productService.findAll();
+        System.out.println("Product information:");
+        List<Product> response = productService.findAll();
+        for (int i=0; i<response.size(); i++) {
+            System.out.println(response.get(i));
+        }
     }
-
     @Override
     public String toString() {
         return ACTION_NAME;
