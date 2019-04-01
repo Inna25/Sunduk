@@ -33,5 +33,4 @@ public class MaxDiscountValidatorTest {
         product.setDiscount(discount);
         return product;
     }
-
 }

@@ -21,7 +21,8 @@ public class CreateProductAction implements Action {
     public CreateProductAction(DefaultProductService productService) {
         this.productService = productService;
     }
-    @Override
+
+    //@Override
     public void execute() {
         Scanner scanner = new Scanner(System.in);
         String name;
@@ -61,7 +62,7 @@ public class CreateProductAction implements Action {
 
     private BigDecimal correctBigDecimal(String stringValue) {
         BigDecimal correctValue;
-        if (stringValue == null || stringValue.equals("")){
+        if (stringValue == null || stringValue.equals("")) {
             correctValue = new BigDecimal(0);
         } else {
             correctValue = new BigDecimal(stringValue);

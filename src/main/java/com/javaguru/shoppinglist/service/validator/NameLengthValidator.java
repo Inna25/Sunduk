@@ -5,7 +5,7 @@ import com.javaguru.shoppinglist.database.Product;
 import org.springframework.stereotype.Component;
 
 @Component
-public class NameLengthValidator implements Validation{
+public class NameLengthValidator implements Validation {
     private final int MIN_NAME_LENGTH = 3;
     private final int MAX_NAME_LENGTH = 32;
 
@@ -21,8 +21,8 @@ public class NameLengthValidator implements Validation{
 
     private void productNameLength(String productName) {
         if (productName.length() < MIN_NAME_LENGTH || MAX_NAME_LENGTH < productName.length()) {
-            throw new FieldValidationException("The field's Name length must be more than "+ MIN_NAME_LENGTH +
-                    " symbols and less than "+ MAX_NAME_LENGTH);
+            throw new FieldValidationException("The field's Name length must be more than " + MIN_NAME_LENGTH +
+                    " symbols and less than " + MAX_NAME_LENGTH);
         }
     }
 

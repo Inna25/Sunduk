@@ -1,5 +1,6 @@
 package com.javaguru.shoppinglist.database;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
@@ -9,7 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class InMemoryDatabase {
+@Profile("inmemorydb")
+public class InMemoryDatabase implements ProductDatabase {
     private Map<Long, Product> database = new HashMap<>();
     private Long productIdSequence = 0L;
 
@@ -17,31 +19,31 @@ public class InMemoryDatabase {
         return database;
     }
 
-    public long createProduct(Product product) {
+    @Override
+    public Long createProduct(Product product) {
         product.setId(productIdSequence);
         database.put(productIdSequence, product);
         return productIdSequence++;
     }
 
+    @Override
     public Optional<Product> getByID(Long id) {
         return Optional.ofNullable(database.get(id));
     }
 
+    @Override
     public boolean existsByName(String name) {
         return getDatabase().values().stream().anyMatch(product ->
                 product.getName().equalsIgnoreCase(name));
     }
 
-    public void returnAll() {
-        int countOfProducts = database.size();
-        if (countOfProducts == 0) {
-            System.out.println("List of products is empty");
+    @Override
+    public Optional<List<Product>> findAll() {
+        if (database.size() == 0) {
+            return Optional.empty();
         } else {
             List<Product> List = new ArrayList<Product>(database.values());
-            System.out.println("Product information:");
-            for (int i = 0; i < countOfProducts; i++) {
-                System.out.println(List.get(i));
-            }
+            return Optional.ofNullable(List);
         }
     }
 

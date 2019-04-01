@@ -1,26 +1,25 @@
 package com.javaguru.shoppinglist.service;
 
-import com.javaguru.shoppinglist.database.InMemoryDatabase;
+import com.javaguru.shoppinglist.database.ProductDatabase;
 import com.javaguru.shoppinglist.service.validator.ProductValidator;
 import com.javaguru.shoppinglist.database.Product;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+import java.util.Optional;
+
 @Component
 public class DefaultProductService implements ProductService {
 
-    private final InMemoryDatabase database;
+    private final ProductDatabase database;
     private final ProductValidator productValidator;
-@Autowired
-    public DefaultProductService(InMemoryDatabase database, ProductValidator productValidator) {
-        this.database = database;
-        this.productValidator = productValidator;
-    }
 
-    public Product findByID(Long id) {
-        return database.getByID(id)
-                .orElseThrow(() -> new IllegalArgumentException("Product not found, id: " + id));
+    @Autowired
+    public DefaultProductService(ProductValidator productValidator, ProductDatabase database) {
+        this.productValidator = productValidator;
+        this.database = database;
     }
 
     @Override
@@ -34,7 +33,15 @@ public class DefaultProductService implements ProductService {
         return response;
     }
 
-    public void findAll() {
-        database.returnAll();
+    @Override
+    public Product findByID(Long id) {
+        return database.getByID(id)
+                .orElseThrow(() -> new IllegalArgumentException("Product not found, id: " + id));
+    }
+
+    @Override
+    public List<Product> findAll() {
+        return database.findAll()
+                .orElseThrow(() -> new IllegalArgumentException("List of products is empty"));
     }
 }

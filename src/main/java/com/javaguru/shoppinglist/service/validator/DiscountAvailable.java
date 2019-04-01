@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import java.math.BigDecimal;
 
 @Component
-public class DiscountAvailable implements Validation{
+public class DiscountAvailable implements Validation {
     private final int PRICE_VALUE_FOR_DISCOUNT = 20;
 
     @Override
