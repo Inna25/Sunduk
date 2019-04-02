@@ -15,7 +15,7 @@ public class FindProductByIdAction implements Action {
 
     private final DefaultProductService productService;
 
-    @Autowired
+    //@Autowired
     public FindProductByIdAction(DefaultProductService productService) {
         this.productService = productService;
     }

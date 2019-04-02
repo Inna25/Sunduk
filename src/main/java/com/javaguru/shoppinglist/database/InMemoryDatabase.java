@@ -2,6 +2,7 @@ package com.javaguru.shoppinglist.database;
 
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,7 +10,7 @@ import java.util.Optional;
 import java.util.ArrayList;
 import java.util.List;
 
-@Component
+@Repository
 @Profile("inmemorydb")
 public class InMemoryDatabase implements ProductDatabase {
     private Map<Long, Product> database = new HashMap<>();

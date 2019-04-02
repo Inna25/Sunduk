@@ -6,11 +6,13 @@ import com.javaguru.shoppinglist.database.Product;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
-@Component
+@Service
 public class DefaultProductService implements ProductService {
 
     private final ProductDatabase database;
@@ -22,7 +24,7 @@ public class DefaultProductService implements ProductService {
         this.database = database;
     }
 
-    @Override
+    @Transactional
     public Long create(Product product) {
         if (product == null) {
             throw new IllegalArgumentException("Cannot be null");
