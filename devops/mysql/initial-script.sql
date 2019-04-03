@@ -4,9 +4,9 @@ USE productList;
 CREATE TABLE IF NOT EXISTS products (
   id BIGINT NOT NULL AUTO_INCREMENT,
   name VARCHAR(60) NOT NULL,
-  price DOUBLE,
+  price DECIMAL(19,2),
   category VARCHAR(40),
-  discount DOUBLE,
+  discount DECIMAL(19,2),
   description VARCHAR(200) NULL,
   created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (id)

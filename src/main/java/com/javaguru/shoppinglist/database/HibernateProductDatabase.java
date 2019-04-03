@@ -13,7 +13,7 @@ import java.util.Optional;
 @Repository
 @Profile("hibernate")
 @Transactional
-public class HibernateProductDatabase implements ProductDatabase{
+public class HibernateProductDatabase implements ProductDatabase {
     private final SessionFactory sessionFactory;
 
     @Autowired
@@ -29,7 +29,7 @@ public class HibernateProductDatabase implements ProductDatabase{
 
     @Override
     public Optional<Product> getByID(Long id) {
-        Product product = (Product)sessionFactory.getCurrentSession().createCriteria(Product.class)
+        Product product = (Product) sessionFactory.getCurrentSession().createCriteria(Product.class)
                 .add(Restrictions.eq("id", id))
                 .uniqueResult();
         return Optional.ofNullable(product);
@@ -39,8 +39,8 @@ public class HibernateProductDatabase implements ProductDatabase{
     public boolean existsByName(String name) {
         String query = "SELECT CASE WHEN count(*)> 0 " +
                 "THEN true ELSE false END " +
-                "FROM Product where name=" + name;
-        return (boolean)sessionFactory.getCurrentSession().createQuery(query)
+                "FROM Product where name='" + name + "'"; //Product
+        return (boolean) sessionFactory.getCurrentSession().createQuery(query)
                 .setMaxResults(1)
                 .uniqueResult();
     }

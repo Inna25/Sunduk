@@ -24,18 +24,6 @@ import java.util.Properties;
 @EnableTransactionManagement(proxyTargetClass = true)
 public class AppConfig {
 
-//    @Value("${jdbc.url}")
-//    private String jdbcUrl;
-//
-//    @Value("${driverClass}")
-//    private String driverClass;
-//
-//    @Value("${database.user.name}")
-//    private String userName;
-//
-//    @Value("${database.user.password}")
-//    private String password;
-
     @Bean
     public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
         return new PropertySourcesPlaceholderConfigurer();
@@ -76,6 +64,7 @@ public class AppConfig {
 
         return properties;
     }
+
     @Bean
     public SessionFactory sessionFactory(DataSource dataSource,
                                          @Value("${hibernate.packagesToScan}") String packagesToScan,
