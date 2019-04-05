@@ -47,8 +47,7 @@ public class AppConfig {
     public JdbcTemplate jdbcTemplate(DataSource dataSource) {
         return new JdbcTemplate(dataSource);
     }
-
-
+    
     @Bean
     public Properties hibernateProperties(
             @Value("${hibernate.dialect}") String dialect,
