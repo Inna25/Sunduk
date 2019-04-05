@@ -22,7 +22,7 @@ public class CreateProductAction implements Action {
         this.productService = productService;
     }
 
-    //@Override
+    @Override
     public void execute() {
         Scanner scanner = new Scanner(System.in);
         String name;

@@ -23,10 +23,11 @@ public class OutputAllProducts implements Action {
     public void execute() {
         System.out.println("Product information:");
         List<Product> response = productService.findAll();
-        for (int i=0; i<response.size(); i++) {
+        for (int i = 0; i < response.size(); i++) {
             System.out.println(response.get(i));
         }
     }
+
     @Override
     public String toString() {
         return ACTION_NAME;
