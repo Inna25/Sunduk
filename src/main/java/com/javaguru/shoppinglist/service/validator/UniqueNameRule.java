@@ -1,6 +1,6 @@
 package com.javaguru.shoppinglist.service.validator;
 
-import com.javaguru.shoppinglist.database.Product;
+import com.javaguru.shoppinglist.domain.Product;
 import com.javaguru.shoppinglist.database.ProductDatabase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

@@ -1,5 +1,7 @@
 package com.javaguru.shoppinglist.database;
 
+import com.javaguru.shoppinglist.domain.Product;
+
 import java.util.List;
 import java.util.Optional;
 

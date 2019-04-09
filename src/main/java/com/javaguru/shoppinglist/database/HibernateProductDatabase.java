@@ -1,5 +1,6 @@
 package com.javaguru.shoppinglist.database;
 
+import com.javaguru.shoppinglist.domain.Product;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;

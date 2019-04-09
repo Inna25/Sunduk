@@ -1,7 +1,7 @@
 package com.javaguru.shoppinglist.database;
 
+import com.javaguru.shoppinglist.domain.Product;
 import org.springframework.context.annotation.Profile;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
