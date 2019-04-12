@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "orderItems")
+@Table(name = "order_items")
 public class OrderItems {
 
     @Id
@@ -13,14 +13,14 @@ public class OrderItems {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "productId", nullable = false)
+    @JoinColumn(name = "product_id", nullable = false)
     private Product product;
 
     @Column(name = "count")
     private int count;
 
     @ManyToOne
-    @JoinColumn(name = "shoppingCartId", nullable = false)
+    @JoinColumn(name = "shopping_cart_id", nullable = false)
     private ShoppingCart shoppingCart;
 
     public Long getId() {

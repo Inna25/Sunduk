@@ -26,7 +26,6 @@ public class AssignProductsAction implements Action {
         System.out.println("Enter count of product's items: ");
         int count = scanner.nextInt();
 
-
         Long response = orderItemService.assignProduct(productId, shoppingCartId, count);
         System.out.println("Products was assigned.");
     }
