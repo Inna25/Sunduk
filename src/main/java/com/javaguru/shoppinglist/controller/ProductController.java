@@ -1,6 +1,6 @@
 package com.javaguru.shoppinglist.controller;
 
-import com.javaguru.shoppinglist.database.Product;
+import com.javaguru.shoppinglist.domain.Product;
 import com.javaguru.shoppinglist.dto.ProductDTO;
 import com.javaguru.shoppinglist.service.ProductService;
 import org.springframework.http.ResponseEntity;
