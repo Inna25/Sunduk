@@ -1,6 +1,6 @@
 package com.javaguru.shoppinglist.consoleUI;
 
-import com.javaguru.shoppinglist.database.Product;
+import com.javaguru.shoppinglist.domain.Product;
 import com.javaguru.shoppinglist.service.*;
 
 import org.springframework.beans.factory.annotation.Autowired;

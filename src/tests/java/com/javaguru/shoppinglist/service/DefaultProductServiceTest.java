@@ -1,6 +1,6 @@
 package com.javaguru.shoppinglist.service;
 
-import com.javaguru.shoppinglist.database.Product;
+import com.javaguru.shoppinglist.domain.Product;
 import com.javaguru.shoppinglist.database.InMemoryDatabase;
 import com.javaguru.shoppinglist.service.validator.ProductValidator;
 import org.junit.Test;

@@ -2,7 +2,7 @@ package com.javaguru.shoppinglist.service;
 
 import com.javaguru.shoppinglist.database.ProductDatabase;
 import com.javaguru.shoppinglist.service.validator.ProductValidator;
-import com.javaguru.shoppinglist.database.Product;
+import com.javaguru.shoppinglist.domain.Product;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
