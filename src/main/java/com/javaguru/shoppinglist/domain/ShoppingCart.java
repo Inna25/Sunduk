@@ -19,12 +19,12 @@ public class ShoppingCart {
         this.id = id;
     }
 
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
-    }
-
     public Long getId() {
         return id;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
     }
 
     public String getCustomerName() {

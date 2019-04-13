@@ -19,6 +19,9 @@ public class ProductController {
     public ResponseEntity<Product> create (@RequestBody ProductDTO productDTO){
         Product product = new Product();
         product.setName(productDTO.getName());
+        product.setPrice(productDTO.getPrice());
+        product.setCategory(productDTO.getCategory());
+        product.setDiscount(productDTO.getDiscount());
         product.setDescription(productDTO.getDescription());
         productService.create(product);
         return ResponseEntity.ok(product);
@@ -27,6 +30,7 @@ public class ProductController {
     @GetMapping("/{id}")
     public ProductDTO findByID(@PathVariable("id") Long id) {
         Product product = productService.findByID(id);
-        return new ProductDTO(product.getId(), product.getName(), product.getDescription());
+        return new ProductDTO(product.getId(), product.getName(), product.getPrice(), product.getCategory(),
+                product.getDiscount(), product.getDescription());
     }
 }
