@@ -27,7 +27,7 @@ public class DefaultProductService implements ProductService {
         if (product == null) {
             throw new IllegalArgumentException("Cannot be null");
         }
-        //productValidator.validate(product);
+        productValidator.validate(product);
         Long response = database.createProduct(product);
 
         return response;

@@ -18,7 +18,8 @@ public class ProductDTO {
                       BigDecimal price,
                       String category,
                       BigDecimal discount,
-                      String description) {
+                      String description)
+    {
         this.id = id;
         this.name = name;
         this.price = price;

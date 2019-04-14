@@ -7,6 +7,8 @@ import com.javaguru.shoppinglist.domain.ShoppingCart;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class OrderItemService {
     private final ProductService productService;
@@ -29,5 +31,9 @@ public class OrderItemService {
         orderItem.setCount(count);
         orderItem.setShoppingCart(shoppingCart);
         return orderItemsDB.createOrderItem(orderItem);
+    }
+
+    public List<Product> allProductInShoppingCart(Long cartId) {
+        return orderItemsDB.findAllProductsByCartId(cartId);
     }
 }
