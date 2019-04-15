@@ -23,9 +23,9 @@ public class HibernateOrderItemsDB {
         return orderItem.getId();
     }
 
-    public List<Product> findAllProductsByCartId(Long cartId) {
-        return sessionFactory.getCurrentSession().createQuery("select p from OrderItems it, Product p join it.shoppingCart s where s.id = :cartId")
-                .setParameter("cartId", cartId)
+    public List<OrderItems> findAllProductsByCartId(Long id) {
+        return sessionFactory.getCurrentSession().createQuery("select p, count from OrderItem it, Product p join it.shoppingCart s where s.id = :id")
+                .setParameter("id", id) //"cartId", cartId
                 .list();
     }
 }

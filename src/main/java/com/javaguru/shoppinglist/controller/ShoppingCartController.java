@@ -3,6 +3,7 @@ package com.javaguru.shoppinglist.controller;
 import com.javaguru.shoppinglist.domain.ShoppingCart;
 import com.javaguru.shoppinglist.dto.ShoppingCartDTO;
 import com.javaguru.shoppinglist.service.ShoppingCartService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,5 +29,17 @@ public class ShoppingCartController {
     public ShoppingCartDTO findByID(@PathVariable("id") Long id) {
         ShoppingCart shoppingCart = shoppingCartService.findShoppingCartById(id);
         return new ShoppingCartDTO(shoppingCart.getId(), shoppingCart.getCustomerName());
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable Long id) {
+        shoppingCartService.deleteShoppingCart(id);
+    }
+
+    @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void update(@PathVariable Long id, @RequestBody ShoppingCartDTO shoppingCartDTO) {
+        shoppingCartService.updateShoppingCart(shoppingCartDTO);
     }
 }

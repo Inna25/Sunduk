@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
-
 @Repository
 @Transactional
 public class HibernateShoppingCartDB {
@@ -30,5 +29,13 @@ public class HibernateShoppingCartDB {
                 .add(Restrictions.eq("id", id))
                 .uniqueResult();
         return Optional.ofNullable(shoppingCart);
+    }
+
+    public void delete(ShoppingCart shoppingCart) {
+        sessionFactory.getCurrentSession().delete(shoppingCart);
+    }
+
+    public void update(ShoppingCart shoppingCart) {
+        sessionFactory.getCurrentSession().saveOrUpdate(shoppingCart);
     }
 }

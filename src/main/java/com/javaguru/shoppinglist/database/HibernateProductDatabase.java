@@ -53,4 +53,13 @@ public class HibernateProductDatabase implements ProductDatabase {
         return Optional.ofNullable(products);
     }
 
+    @Override
+    public void delete(Product product) {
+        sessionFactory.getCurrentSession().delete(product);
+    }
+
+    @Override
+    public void update(Product product) {
+        sessionFactory.getCurrentSession().saveOrUpdate(product);
+    }
 }

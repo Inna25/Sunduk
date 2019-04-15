@@ -13,4 +13,8 @@ public interface ProductDatabase {
     boolean existsByName(String name);
 
     Optional<List<Product>> findAll();
+
+    void delete(Product product);
+
+    void update(Product product);
 }

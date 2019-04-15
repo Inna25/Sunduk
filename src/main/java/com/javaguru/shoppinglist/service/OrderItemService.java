@@ -33,7 +33,8 @@ public class OrderItemService {
         return orderItemsDB.createOrderItem(orderItem);
     }
 
-    public List<Product> allProductInShoppingCart(Long cartId) {
-        return orderItemsDB.findAllProductsByCartId(cartId);
-    }
+   //To do
+    // public List<Product> allProductsInShoppingCart(Long cartId) {  //OrderItems
+       // return orderItemsDB.findAllProductsByCartId(cartId);
+    //}
 }
