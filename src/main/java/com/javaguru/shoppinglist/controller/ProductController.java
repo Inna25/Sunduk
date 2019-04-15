@@ -5,7 +5,6 @@ import com.javaguru.shoppinglist.dto.ProductDTO;
 import com.javaguru.shoppinglist.service.ProductService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -20,11 +19,6 @@ public class ProductController {
     @PostMapping
     public ResponseEntity<Product> create (@RequestBody ProductDTO productDTO){
         Product product = new Product();
-        /*product.setName(productDTO.getName());
-        product.setPrice(productDTO.getPrice());
-        product.setCategory(productDTO.getCategory());
-        product.setDiscount(productDTO.getDiscount());
-        product.setDescription(productDTO.getDescription());*/
         productService.create(productDTO);
         return ResponseEntity.ok(product);
     }
@@ -41,9 +35,9 @@ public class ProductController {
         productService.deleteProduct(id);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void update(@PathVariable Long id, @RequestBody ProductDTO productDTO) {
+    public void update(@RequestBody ProductDTO productDTO) { //@PathVariable Long id,
         productService.updateProduct(productDTO);
     }
 

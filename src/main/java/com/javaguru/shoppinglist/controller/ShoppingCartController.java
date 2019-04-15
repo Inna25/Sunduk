@@ -37,9 +37,9 @@ public class ShoppingCartController {
         shoppingCartService.deleteShoppingCart(id);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void update(@PathVariable Long id, @RequestBody ShoppingCartDTO shoppingCartDTO) {
+    public void update(@RequestBody ShoppingCartDTO shoppingCartDTO) {
         shoppingCartService.updateShoppingCart(shoppingCartDTO);
     }
 }
