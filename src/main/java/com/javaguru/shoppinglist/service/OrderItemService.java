@@ -8,8 +8,6 @@ import com.javaguru.shoppinglist.dto.OrderItemDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-
 @Component
 public class OrderItemService {
     private final ProductService productService;
@@ -24,9 +22,9 @@ public class OrderItemService {
         this.orderItemsDB = orderItemsDB;
     }
 
-    public Long assignProduct(OrderItemDTO orderItemDTO) { //(Long productId, Long shoppingCartId, int count) {
+    public Long assignProduct(OrderItemDTO orderItemDTO) {
 
-        Product product = productService.findByID(orderItemDTO.getProductId()); //(productId);
+        Product product = productService.findByID(orderItemDTO.getProductId());
         ShoppingCart shoppingCart = shoppingCartService.findShoppingCartById(orderItemDTO.getCartId());
         OrderItems orderItem = new OrderItems();
         orderItem.setProduct(product);
