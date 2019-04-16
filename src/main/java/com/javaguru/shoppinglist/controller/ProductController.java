@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/products")
 public class ProductController {
@@ -29,6 +31,12 @@ public class ProductController {
         return new ProductDTO(product.getId(), product.getName(), product.getPrice(), product.getCategory(),
                 product.getDiscount(), product.getDescription());
     }
+
+    @GetMapping
+    public List<ProductDTO> findAll(){
+        return productService.findAll();
+    }
+
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long id) {
@@ -37,7 +45,7 @@ public class ProductController {
 
     @PutMapping
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void update(@RequestBody ProductDTO productDTO) { //@PathVariable Long id,
+    public void update(@RequestBody ProductDTO productDTO) {
         productService.updateProduct(productDTO);
     }
 

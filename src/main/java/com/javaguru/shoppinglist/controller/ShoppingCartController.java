@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/shopping_carts")
 public class ShoppingCartController {
@@ -29,6 +31,11 @@ public class ShoppingCartController {
     public ShoppingCartDTO findByID(@PathVariable("id") Long id) {
         ShoppingCart shoppingCart = shoppingCartService.findShoppingCartById(id);
         return new ShoppingCartDTO(shoppingCart.getId(), shoppingCart.getCustomerName());
+    }
+
+    @GetMapping
+    public List<ShoppingCartDTO> findAll(){
+        return shoppingCartService.findAll();
     }
 
     @DeleteMapping("/{id}")

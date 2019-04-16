@@ -11,6 +11,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 @Service
@@ -34,6 +36,17 @@ public class ShoppingCartService {
         return shoppingCartDB.getByID(shoppingCartId)
                 .orElseThrow(() -> new IllegalArgumentException("Shopping cart with id: " +
                         shoppingCartId + " not found"));
+    }
+
+    public List<ShoppingCartDTO> findAll() {
+        List<ShoppingCart> listOfCarts = shoppingCartDB.findAll()
+                .orElseThrow(() -> new IllegalArgumentException("List of products is empty"));
+        List<ShoppingCartDTO> listOfCartsDTO = new ArrayList<ShoppingCartDTO>();
+        for (int i = 0; i<listOfCarts.size(); i++) {
+            ShoppingCartDTO productDTO = shoppingCartConverter.convert(listOfCarts.get(i));
+            listOfCartsDTO.add(productDTO);
+        }
+        return listOfCartsDTO;
     }
 
     public void updateShoppingCart(ShoppingCartDTO shoppingCartDTO) {
