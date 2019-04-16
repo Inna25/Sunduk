@@ -48,5 +48,4 @@ public class ProductController {
     public void update(@RequestBody ProductDTO productDTO) {
         productService.updateProduct(productDTO);
     }
-
 }

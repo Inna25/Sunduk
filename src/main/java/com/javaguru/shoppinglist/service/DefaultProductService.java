@@ -49,9 +49,9 @@ public class DefaultProductService implements ProductService {
     @Override
     public List<ProductDTO> findAll() {
         List<Product> listOfProducts = database.findAll()
-                                .orElseThrow(() -> new IllegalArgumentException("List of products is empty"));
+                .orElseThrow(() -> new IllegalArgumentException("List of products is empty"));
         List<ProductDTO> listOfProdutsDTO = new ArrayList<ProductDTO>();
-        for (int i = 0; i<listOfProducts.size(); i++) {
+        for (int i = 0; i < listOfProducts.size(); i++) {
             ProductDTO productDTO = productConverter.convert(listOfProducts.get(i));
             listOfProdutsDTO.add(productDTO);
         }

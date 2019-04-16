@@ -1,29 +1,21 @@
 package com.javaguru.shoppinglist.dto;
 
-import com.javaguru.shoppinglist.domain.Product;
-import com.javaguru.shoppinglist.domain.ShoppingCart;
-
 public class OrderItemDTO {
     private Long id;
-    private Product product;
+    private Long productId;
     private int count;
-    private ShoppingCart shoppingCart;
+    private Long cartId;
 
     public OrderItemDTO() {
 
     }
 
-    public OrderItemDTO(Long id, Product product, int count, ShoppingCart shoppingCart) {
+    public OrderItemDTO(Long id, Long productId, int count, Long cartId) {
         this.id = id;
-        this.product = product;
+        this.productId = productId;
         this.count = count;
-        this.shoppingCart = shoppingCart;
+        this.cartId = cartId;
     }
-
-    /*public OrderItemDTO(Long id, int count) {
-        this.id = id;
-        this.count = count;
-    }*/
 
     public Long getId() {
         return id;
@@ -33,10 +25,12 @@ public class OrderItemDTO {
         this.id = id;
     }
 
-    public Product getProduct() {     return product;}
+    public Long getProductId() {
+        return productId;
+    }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setProductId(Long productId) {
+        this.productId = productId;
     }
 
     public int getCount() {
@@ -47,8 +41,11 @@ public class OrderItemDTO {
         this.count = count;
     }
 
-    public ShoppingCart getShoppingCart() {return shoppingCart;}
+    public Long getCartId() {
+        return cartId;
+    }
 
-    public void setShoppingCart(ShoppingCart shoppingCart) {this.shoppingCart = shoppingCart;}
-
+    public void setCartId(Long cartId) {
+        this.cartId = cartId;
+    }
 }

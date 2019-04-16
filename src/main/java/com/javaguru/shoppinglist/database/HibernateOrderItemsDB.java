@@ -1,7 +1,6 @@
 package com.javaguru.shoppinglist.database;
 
 import com.javaguru.shoppinglist.domain.OrderItems;
-import com.javaguru.shoppinglist.domain.Product;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,8 +23,9 @@ public class HibernateOrderItemsDB {
     }
 
     public List<OrderItems> findAllProductsByCartId(Long id) {
-        return sessionFactory.getCurrentSession().createQuery("select p, count from OrderItem it, Product p join it.shoppingCart s where s.id = :id")
-                .setParameter("id", id) //"cartId", cartId
+        return sessionFactory.getCurrentSession().createQuery("select p, from OrderItem it, Product p join " +
+                "it.shoppingCart s where s.id = :id")
+                .setParameter("id", id)
                 .list();
     }
 }

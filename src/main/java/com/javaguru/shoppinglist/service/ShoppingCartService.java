@@ -1,19 +1,15 @@
 package com.javaguru.shoppinglist.service;
 
-
-import com.javaguru.shoppinglist.database.HibernateOrderItemsDB;
 import com.javaguru.shoppinglist.database.HibernateShoppingCartDB;
 import com.javaguru.shoppinglist.domain.ShoppingCart;
 import com.javaguru.shoppinglist.dto.ShoppingCartDTO;
 import com.javaguru.shoppinglist.mapper.ShoppingCartConverter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.NoSuchElementException;
 
 @Service
 public class ShoppingCartService {
@@ -42,7 +38,7 @@ public class ShoppingCartService {
         List<ShoppingCart> listOfCarts = shoppingCartDB.findAll()
                 .orElseThrow(() -> new IllegalArgumentException("List of products is empty"));
         List<ShoppingCartDTO> listOfCartsDTO = new ArrayList<ShoppingCartDTO>();
-        for (int i = 0; i<listOfCarts.size(); i++) {
+        for (int i = 0; i < listOfCarts.size(); i++) {
             ShoppingCartDTO productDTO = shoppingCartConverter.convert(listOfCarts.get(i));
             listOfCartsDTO.add(productDTO);
         }
@@ -56,8 +52,6 @@ public class ShoppingCartService {
 
     @Transactional
     public void deleteShoppingCart(Long id) {
-        //To do - search by shoppingCartId in OrderItems and delete them
-        //HibernateOrderItemsDB orderItemsDB =
         shoppingCartDB.getByID(id).ifPresent(shoppingCartDB::delete);
     }
 }
