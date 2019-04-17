@@ -5,26 +5,26 @@ import javax.persistence.Table;
 import java.util.Objects;
 
 @Entity
-@Table(name = "shoppingCart")
+@Table(name = "shopping_cart")
 public class ShoppingCart {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "customerName", nullable = false)
+    @Column(name = "customer_name", nullable = false)
     private String customerName;
 
     public void setId(Long id) {
         this.id = id;
     }
 
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
-    }
-
     public Long getId() {
         return id;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
     }
 
     public String getCustomerName() {
@@ -49,7 +49,7 @@ public class ShoppingCart {
     public String toString() {
         return "ShoppingCart{" +
                 "id=" + id +
-                ", customerName='" + customerName + '\'' +
+                ", customer_name='" + customerName + '\'' +
                 '}';
     }
 }

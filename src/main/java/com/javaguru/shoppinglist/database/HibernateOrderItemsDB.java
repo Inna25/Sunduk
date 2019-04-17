@@ -5,6 +5,8 @@ import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Repository
 @Transactional
 public class HibernateOrderItemsDB {
@@ -18,5 +20,12 @@ public class HibernateOrderItemsDB {
     public Long createOrderItem(OrderItems orderItem) {
         sessionFactory.getCurrentSession().save(orderItem);
         return orderItem.getId();
+    }
+
+    public List<OrderItems> findAllProductsByCartId(Long id) {
+        return sessionFactory.getCurrentSession().createQuery("select p, from OrderItem it, Product p join " +
+                "it.shoppingCart s where s.id = :id")
+                .setParameter("id", id)
+                .list();
     }
 }

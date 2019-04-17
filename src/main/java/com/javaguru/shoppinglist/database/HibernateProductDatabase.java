@@ -4,7 +4,6 @@ import com.javaguru.shoppinglist.domain.Product;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,7 +11,6 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-@Profile("hibernate")
 @Transactional
 public class HibernateProductDatabase implements ProductDatabase {
     private final SessionFactory sessionFactory;
@@ -40,7 +38,7 @@ public class HibernateProductDatabase implements ProductDatabase {
     public boolean existsByName(String name) {
         String query = "SELECT CASE WHEN count(*)> 0 " +
                 "THEN true ELSE false END " +
-                "FROM Product where name='" + name + "'"; //Product
+                "FROM Product where name='" + name + "'";
         return (boolean) sessionFactory.getCurrentSession().createQuery(query)
                 .setMaxResults(1)
                 .uniqueResult();
@@ -53,4 +51,13 @@ public class HibernateProductDatabase implements ProductDatabase {
         return Optional.ofNullable(products);
     }
 
+    @Override
+    public void delete(Product product) {
+        sessionFactory.getCurrentSession().delete(product);
+    }
+
+    @Override
+    public void update(Product product) {
+        sessionFactory.getCurrentSession().saveOrUpdate(product);
+    }
 }
